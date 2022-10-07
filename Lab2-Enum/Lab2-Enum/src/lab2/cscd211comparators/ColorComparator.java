@@ -1,4 +1,9 @@
 package lab2.cscd211comparators;
 
-public class ColorComparator {
+import lab2.cscd211classes.Person;
+
+import java.util.Comparator;
+
+public class ColorComparator implements Comparator<Person> {
+
 }
