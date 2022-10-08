@@ -2,7 +2,7 @@ package lab2.cscd211classes;
 
 import lab2.cscd211enums.Color;
 
-public class Person implements java.lang.Comparable<Person> {
+public class Person extends java.lang.Object implements java.lang.Comparable<Person>{
 
     private java.lang.String fn;    //first name
     private java.lang.String ln;    //last name
@@ -17,6 +17,16 @@ public class Person implements java.lang.Comparable<Person> {
 
     public Color getColor() {
         return color;
+    }
+
+    public int compareTo(Person another){
+        if (another == null){
+            throw new java.lang.IllegalArgumentException("another cannot be null");
+        }
+        if (fn.compareTo(another.fn) == 0){
+            return (ln.compareTo(another.ln));
+            }
+        return fn.compareTo(another.fn);
     }
 
     @Override

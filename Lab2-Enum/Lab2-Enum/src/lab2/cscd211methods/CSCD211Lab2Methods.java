@@ -51,11 +51,31 @@ public class CSCD211Lab2Methods {
     }
 
     public static void printArray(Person[] myPeeps) {
+        if (myPeeps == null ){
+            throw new java.lang.IllegalArgumentException("array cannot be null");
+        }
+        int i;
+        for (i = 0; i < myPeeps.length; i++){
+            System.out.println(myPeeps[i] + "\r\n");
+        }
     }
 
     public static Color readColor(Scanner kb) {
+        if (kb == null){
+            throw new IllegalArgumentException("scanner cannot be null");
+        }
+        return kb.nextLine().convertColor;
     }
 
     public static void displayAll(Color toFind, Person[] myPeeps) {
+        if (myPeeps == null){
+            throw new java.lang.IllegalArgumentException("array cannot be null");
+        }
+        int i;
+        for (i = 0; i < myPeeps.length; i++){
+            if (myPeeps[i].getColor() == toFind){
+                System.out.println(myPeeps[i]);
+            }
+        }
     }
 }
