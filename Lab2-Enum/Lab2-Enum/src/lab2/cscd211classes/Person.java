@@ -4,14 +4,15 @@ import lab2.cscd211enums.Color;
 
 public class Person implements java.lang.Comparable<Person> {
 
-    private Color color;    //color
     private java.lang.String fn;    //first name
     private java.lang.String ln;    //last name
+    private Color color;    //color
 
-    public Person(Color color, String fn, String ln) {
-        this.color = color;
+
+    public Person(String fn, String ln, Color color) {
         this.fn = fn;
         this.ln = ln;
+        this.color = color;
     }
 
     public Color getColor() {

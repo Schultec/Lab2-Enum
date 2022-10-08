@@ -16,19 +16,38 @@ public class CSCD211Lab2Methods {
         Person mypeeps[];
         mypeeps = new Person[total];
         int i;
+        int j;
+        String data[] = new String[3];
         for (i = 0; i < mypeeps.length; i++){
-            String data = fin.nextLine().trim();
-            String[] peopleData = data.split(",");
+            for  (j = 0; j < 3; j++){
+                data[j] = fin.nextLine().trim();
+            }
             mypeeps[i] = new Person(
-                    Color.valueOf(peopleData[0]),
-                    peopleData[1],
-                    peopleData[2]
+                    data[1],
+                    data[2],
+                    Color.valueOf(data[0])
             );
         }
         return mypeeps;
     }
 
     public static int menu(Scanner kb) {
+        if(kb == null){
+            throw new IllegalArgumentException("Bad Scanner");
+        }
+        
+        int choice = 0;
+        do
+        {
+            System.out.println("The menu method. Valid menu choices are:");
+            System.out.println("1. Print the Array to the screen");
+            System.out.println("2. Display all people that contain a certain color");
+            System.out.println("3. Sort the array by Color");
+            System.out.println("4. Sort the array by the 'natural order'");
+            System.out.println("5. Quit");
+        }while(choice < 1 || choice > 5);
+        
+        return choice;
     }
 
     public static void printArray(Person[] myPeeps) {
