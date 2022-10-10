@@ -3,7 +3,10 @@ package lab2.cscd211methods;
 import lab2.cscd211classes.Person;
 import lab2.cscd211enums.Color;
 
+import java.awt.image.ColorConvertOp;
 import java.util.Scanner;
+
+import static jdk.javadoc.internal.doclets.toolkit.util.Utils.toUpperCase;
 
 public class CSCD211Lab2Methods {
     public static Person[] fillArray(Scanner fin, int total) {
@@ -23,9 +26,9 @@ public class CSCD211Lab2Methods {
                 data[j] = fin.nextLine().trim();
             }
             mypeeps[i] = new Person(
+                    data[0],
                     data[1],
-                    data[2],
-                    Color.valueOf(data[0])
+                    convertColor(data[2])
             );
         }
         return mypeeps;
@@ -45,6 +48,7 @@ public class CSCD211Lab2Methods {
             System.out.println("3. Sort the array by Color");
             System.out.println("4. Sort the array by the 'natural order'");
             System.out.println("5. Quit");
+            choice = kb.nextInt();
         }while(choice < 1 || choice > 5);
         
         return choice;
@@ -59,12 +63,32 @@ public class CSCD211Lab2Methods {
             System.out.println(myPeeps[i] + "\r\n");
         }
     }
-
+    public static Color convertColor(java.lang.String color){
+        if (color == null){
+            throw new IllegalArgumentException("string cannot be null");
+        }
+        Color convert = null;
+        switch (color){
+            case "red":
+                convert = Color.RED;
+                break;
+            case "green":
+                convert = Color.GREEN;
+                break;
+            case "blue":
+                convert = Color.BLUE;
+                break;
+            case "purple":
+                convert = Color.PURPLE;
+                break;
+        }
+        return convert;
+    }
     public static Color readColor(Scanner kb) {
         if (kb == null){
             throw new IllegalArgumentException("scanner cannot be null");
         }
-        return kb.nextLine().convertColor;
+        return convertColor(kb.nextLine());
     }
 
     public static void displayAll(Color toFind, Person[] myPeeps) {
